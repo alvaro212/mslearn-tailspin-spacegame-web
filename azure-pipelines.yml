@@ -1,9 +1,9 @@
 pool:
-  vmImage: 'Ubuntu-16.04'
+  name: 'MyAgentPool'
   demands:
     - npm
 
-variables:
+    variables:
   buildConfiguration: 'Release'
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
   dotnetSdkVersion: '2.1.505'
