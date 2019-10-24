@@ -1,5 +1,5 @@
 pool:
-  vmImage: 'Ubuntu-16.04'
+  name: 'MyAgentPool'
   demands:
     - npm
 
@@ -32,6 +32,12 @@ steps:
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
   displayName: 'Write build info'
   workingDirectory: $(wwwrootDir)
+
+- task: DotNetCoreCLI@2
+  displayName: 'Restore project dependencies'
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
 
 - task: NuGetCommand@2
   displayName: 'Restore project dependencies'
